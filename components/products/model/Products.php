@@ -8,7 +8,7 @@ class Products extends Model
 {
 
     public function getList($from, $how_many, $category = 0, $sort = 'ASC') {
-        $q = 'select p.*, pictures.* from
+        $q = 'select distinct p.*, pictures.* from
               products p,
               category2products_map map,
               pictures
@@ -19,7 +19,7 @@ class Products extends Model
             $q .= ' and map.cat2prod_map_category_id = '.$category;
         }
         $q .= ' order by product_price '.$sort;
-        if (($from != 0) && ($how_many != 0)) {
+        if ($how_many != 0) {
             $q .= ' limit '.$from.', '.$how_many;
         }
 

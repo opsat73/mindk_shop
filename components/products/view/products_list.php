@@ -48,10 +48,10 @@
                         </li>
                         <?php $i++;
                     endwhile;
-                    if (($start + $i) != $page_count):?>
+                    if (($start + $i) <= $page_count):?>
                         <li>
-                            <a href="<?php echo '/'.$current_category.'/'.$sort.'/'.($start + $i+1)?>" aria-label="Next">
-                                <span aria-hidden="true">&laquo;</span>
+                            <a href="<?php echo '/'.$current_category.'/'.$sort.'/'.($start + $i)?>" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
                     <?php endif; ?>
