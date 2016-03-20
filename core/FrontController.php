@@ -15,7 +15,7 @@ class FrontController extends Controller
     }
 
     public function execute($action_p) {
-        $action = array('controller' => 'com:menu.controller.Menu', 'action' => 'DrawMenu');
+        $action = array('controller' => 'com:menu.controller.Menu', 'action' => 'DrawMenu', 'parameters' => array('orig_action' => $action_p));
         $menu = ServiceLocator::get('core:Application')->process($action);
 
         $content = ServiceLocator::get('core:Application')->process($action_p);

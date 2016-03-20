@@ -20,7 +20,6 @@ class Products extends Controller
         $page_count = ceil($this->model->getCountByCategory($category)/10);
         $this->assignParameter('page_count', $page_count);
         $this->assignParameter('current_category', $category);
-        $this->assignParameter('sort', $sort);
         $this->assignParameter('current_page', $page);
         $this->assignParameter('product_list', $product_list);
         $this->assignParameter('categories', $categories);
