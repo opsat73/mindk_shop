@@ -14,6 +14,7 @@ class Application
     }
 
     public function process($action, $needFrontController) {
+        $session = ServiceLocator::get('core:Session');
         if ($needFrontController) {
             $frontController = ServiceLocator::get('core:FrontController');
             $frontController->execute($action);

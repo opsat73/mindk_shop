@@ -21,12 +21,16 @@ class Router
         $request = ServiceLocator::get('core:Request');
         $uri = $request->request_URI;
         foreach ($this->routes as $key => $value) {
-            if (preg_match('/'.$value[path].'/', $uri, $rez)) {
+            $request_method = (isset($value[method])?$value[method]:'GET');
+            if (preg_match('/'.$value[path].'/', $uri, $rez) && $request_method == $request->request_type) {
                 $action = array(
                     'controller' => $value[controller],
                     'action'     => $value[action],
                     'parameters' => $rez
                 );
+                if ($request->request_type == 'POST') {
+                    $action[parameters] = $_REQUEST;
+                }
                 return $action;
             }
         }

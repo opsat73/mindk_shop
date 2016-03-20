@@ -10,10 +10,33 @@ return array(array (
         'action' => 'ShowList',
         'controller' => 'com:products.controller.Products'
     ),
-
+    'bucket_test' => array(
+        'path' => '\/add',
+        'action' => 'AddProduct',
+        'controller' => 'com:bucket.controller.Buckets',
+        'method'     => 'POST'
+    ),
+    'ordered' => array(
+        'path' => '\/bucket\/(.*)',
+        'action' => 'ShowOrdered',
+        'controller' => 'com:bucket.controller.Buckets',
+        'method'     => 'GET'
+    ),
+    'bucket' => array(
+        'path' => '\/bucket',
+        'action' => 'ShowBucket',
+        'controller' => 'com:bucket.controller.Buckets',
+        'method'     => 'GET'
+    ),
+    'order' => array(
+        'path' => '\/bucket',
+        'action' => 'Order',
+        'controller' => 'com:bucket.controller.Buckets',
+        'method'     => 'POST'
+    ),
     'home' => array(
-    'path' => '\/',
-    'action' => 'ShowList',
-    'controller' => 'com:products.controller.Products'
-)
+        'path' => '\/',
+        'action' => 'ShowList',
+        'controller' => 'com:products.controller.Products'
+    ),
 ));
