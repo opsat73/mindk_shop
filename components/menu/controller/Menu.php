@@ -15,6 +15,15 @@ class Menu extends Controller
     public function actionDrawMenu ($context = array())
     {
         $session = ServiceLocator::get('core:Session');
+        $current_location = $session->getParameter('current_location');
+        if (in_array($current_location, array('products', 'home', 'product'))) {
+            $current_location = 'list';
+        }
+        if (in_array($current_location, array('bucket'))) {
+            $current_location = 'bucket';
+        }
+        $this->assignParameter('current_location', $current_location);
+        $session = ServiceLocator::get('core:Session');
         $count = $session->getParameter('count');
         $total_price = $session->getParameter('total_price');
         if (isset($count)) {

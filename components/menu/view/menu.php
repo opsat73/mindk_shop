@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li class="<?php echo ($current_location=='list')?'active':''?>">
                     <a href="/0/ASC/1">
                         List
                         <span class="sr-only">
@@ -10,7 +10,7 @@
                         </span>
                     </a>
                 </li>
-                <li>
+                <li class="<?php echo ($current_location=='bucket')?'active':''?>">
                     <a href="/bucket">
                         Bucket
                     </a>

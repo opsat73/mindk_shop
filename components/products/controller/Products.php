@@ -16,9 +16,10 @@ class Products extends Controller
         $categories = ServiceLocator::get('core:Application')->process($action);
         $this->getModel();
         $this->getView('products_list');
-        $product_list = $this->model->getList(10*($page-1)+1, 10, $category, $sort);
+        $product_list = $this->model->getList(10*($page-1), 10, $category, $sort);
         $page_count = ceil($this->model->getCountByCategory($category)/10);
         $this->assignParameter('page_count', $page_count);
+        $this->assignParameter('sort', $sort);
         $this->assignParameter('current_category', $category);
         $this->assignParameter('current_page', $page);
         $this->assignParameter('product_list', $product_list);
