@@ -23,6 +23,8 @@ class Router
         foreach ($this->routes as $key => $value) {
             $request_method = (isset($value[method])?$value[method]:'GET');
             if (preg_match('/'.$value[path].'/', $uri, $rez) && $request_method == $request->request_type) {
+                $session = ServiceLocator::get('core:Session');
+                $session->putParameter('current_location', $key);
                 $action = array(
                     'controller' => $value[controller],
                     'action'     => $value[action],

@@ -12,6 +12,7 @@ class Request
 {
     public $request_type = null;
     public $request_URI = null;
+    public $current_location = null;
     //private $request_type = null;
     public function __construct() {
         $this->request_type = $_SERVER['REQUEST_METHOD'];

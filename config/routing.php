@@ -10,7 +10,7 @@ return array(array (
         'action' => 'ShowList',
         'controller' => 'com:products.controller.Products'
     ),
-    'bucket_test' => array(
+    'bucket_add' => array(
         'path' => '\/add',
         'action' => 'AddProduct',
         'controller' => 'com:bucket.controller.Buckets',
