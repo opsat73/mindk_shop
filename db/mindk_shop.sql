@@ -31,7 +31,7 @@ DROP TABLE IF EXISTS `mindk_shop`.`pictures` ;
 CREATE TABLE IF NOT EXISTS `mindk_shop`.`pictures` (
   `picture_id` INT NOT NULL AUTO_INCREMENT,
   `picture_product_id` INT NULL,
-  `picture_file_type` ENUM('T','S') NULL,
+  `picture_file_type` VARCHAR(45) NULL,
   `picture_file_name` VARCHAR(45) NULL,
   `picture_origin_file_name` VARCHAR(45) NULL,
   PRIMARY KEY (`picture_id`),

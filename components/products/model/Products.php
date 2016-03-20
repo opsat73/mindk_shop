@@ -7,11 +7,13 @@ use \core\Model;
 class Products extends Model
 {
     public function getList($from, $how_many, $category = 0) {
-        $q = 'select p.* from
+        $q = 'select p.*, pictures.* from
               products p,
-              category2products_map map
+              category2products_map map,
+              pictures
               where 1 = 1
-              and p.product_id = map.cat2prod_map_product_id';
+              and p.product_id = map.cat2prod_map_product_id
+              and pictures.picture_product_id = p.product_id';
         if ($category != 0) {
             $q .= ' and map.cat2prod_map_category_id = '.$category;
         }
@@ -25,8 +27,11 @@ class Products extends Model
 
     public function getItem($product_id) {
         $q = 'select * from
-              products
-              where product_id = '.$product_id;
+              products,
+              pictures
+              where
+                 pictures.picture_product_id = products.product_id
+               and product_id = '.$product_id;
         $result = $this->executeSelectQuery($q);
         return $result[0];
     }
@@ -43,8 +48,10 @@ class Products extends Model
         }
         $condition = implode(', ',$randoms);
         $q = 'select * from
-              products
-              where product_id in ('.$condition.')';
+              products,
+              pictures
+              where pictures.picture_product_id = products.product_id
+               and product_id in ('.$condition.')';
         $result = $this->executeSelectQuery($q);
         return $result;
     }

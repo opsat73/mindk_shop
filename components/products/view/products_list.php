@@ -12,7 +12,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-4">
-                            <img src="/media/img/default.jpg" class="img-rounded"
+                            <img src="/media/img/<?php echo $value[picture_file_type].'/'.$value[picture_file_name];?>" class="img-rounded"
                                  alt=<?php echo $value[product_name]; ?> width="300" height="300">
                         </div>
                         <div class="col-lg-1">
