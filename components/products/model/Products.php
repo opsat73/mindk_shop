@@ -8,20 +8,20 @@ class Products extends Model
 {
 
     public function getList($from, $how_many, $category = 0, $sort = 'ASC') {
-        $q = 'select distinct p.*, pictures.* from
-              products p,
-              category2products_map map,
-              pictures
-              where 1 = 1
-              and p.product_id = map.cat2prod_map_product_id
-              and pictures.picture_product_id = p.product_id';
+        $q = 'select p.*, pictures.* from
+              products p
+              inner join pictures on pictures.picture_product_id = p.product_id';
+
         if ($category != 0) {
-            $q .= ' and map.cat2prod_map_category_id = '.$category;
+            $q .= ' inner join category2products_map map on p.product_id = map.cat2prod_map_product_id
+                    where
+                        map.cat2prod_map_category_id = '.$category;
         }
         $q .= ' order by product_price '.$sort;
         if ($how_many != 0) {
             $q .= ' limit '.$from.', '.$how_many;
         }
+        echo $q;
 
         return $this->executeSelectQuery($q);
     }
