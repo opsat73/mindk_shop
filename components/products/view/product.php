@@ -9,7 +9,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-4">
-                        <img src="/media/img/default.jpg" class="img-rounded" alt=<?php echo $product[product_name];?> width="300" height="300">
+                        <img src="/media/img/<?php echo $product[picture_file_type].'/'.$product[picture_file_name];?>" class="img-rounded" width="300" height="300">
                     </div>
                     <div class="col-lg-1">
                     </div>

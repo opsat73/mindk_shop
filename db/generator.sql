@@ -34,7 +34,7 @@ DROP PROCEDURE place_products;
 DROP PROCEDURE generate_products;
 CREATE PROCEDURE generate_products(IN PRODUCTS_COUNT INT)
   BEGIN
-    DECLARE PRODUCT_COUNT INT DEFAULT 0;
+    DECLARE PRODUCT_COUNT INT DEFAULT 1;
     DECLARE TOTAL_NAME VARCHAR(100) DEFAULT '';
     DECLARE RANDOM_DIGIT INT DEFAULT 0;
     DECLARE RANDOM_NAME_PART VARCHAR(50) DEFAULT '';
@@ -43,25 +43,28 @@ CREATE PROCEDURE generate_products(IN PRODUCTS_COUNT INT)
     DECLARE PRICE DECIMAL(10, 2) DEFAULT '0';
     DECLARE ALPHA VARCHAR(26) DEFAULT 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     WHILE PRODUCT_COUNT < PRODUCTS_COUNT DO
-      SET RANDOM_DIGIT = MOD(ROUND(RAND() * 1000), 3);
+      SET RANDOM_DIGIT = MOD(ROUND(RAND() * 1000), 3)+1;
       SELECT name
       INTO RANDOM_NAME_PART
       FROM mindk_shop.product_rand1
       WHERE id = RANDOM_DIGIT;
       SET TOTAL_NAME = CONCAT(RANDOM_NAME_PART, ' ', SUBSTR(ALPHA, MOD(ROUND(RAND() * 1000), 26), 1), '-');
 
-      SET RANDOM_DIGIT = MOD(ROUND(RAND() * 1000), 3);
+      SET RANDOM_DIGIT = MOD(ROUND(RAND() * 1000), 3)+1;
       SELECT name
       INTO RANDOM_NAME_PART
       FROM mindk_shop.product_rand2
       WHERE id = RANDOM_DIGIT;
-      SET TOTAL_NAME = CONCAT(TOTAL_NAME, RANDOM_NAME_PART, ' ', MOD(ROUND(RAND() * 1000), 5), '000');
+      SET TOTAL_NAME = CONCAT(TOTAL_NAME, RANDOM_NAME_PART, ' ', MOD(ROUND(RAND() * 1000), 5)+1, '000');
       SET DESCRIPTION = CONCAT('Description for ', TOTAL_NAME);
       SET COUNT = ROUND(RAND() * 1000);
       SET PRICE = ROUND(RAND() * 10000, 2);
 
-      INSERT INTO mindk_shop.products (product_name, product_count, product_description, product_price, product_available, product_visible)
-      VALUES (TOTAL_NAME, COUNT, DESCRIPTION, PRICE, 1, 1);
+      INSERT INTO mindk_shop.products (product_id, product_name, product_count, product_description, product_price, product_available, product_visible)
+      VALUES (PRODUCT_COUNT,TOTAL_NAME, COUNT, DESCRIPTION, PRICE, 1, 1);
+      Commit;
+      INSERT INTO mindk_shop.pictures (picture_product_id, picture_file_type, picture_file_name)
+      VALUES (PRODUCT_COUNT, RANDOM_NAME_PART, concat((MOD(ROUND(RAND() * 1000), 5)), '.jpg'));
       SET PRODUCT_COUNT = PRODUCT_COUNT + 1;
     END WHILE;
     COMMIT;
