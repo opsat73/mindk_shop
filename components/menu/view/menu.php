@@ -1,6 +1,4 @@
-<?php
-?>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
@@ -13,9 +11,15 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/">
+                    <a href="/bucket">
                         Bucket
                     </a>
+                </li>
+                <li class="total_price_menu <?php echo (isset($count))?'':'hidden';?>">
+                    <p class="navbar-text item_count"><?php echo $count; ?> items</p>
+                </li>
+                <li class="total_price_menu <?php echo (isset($count))?'':'hidden';?>">
+                    <p class="navbar-text total_price"><?php echo $total_price; ?> $</p>
                 </li>
                 <?php if ($show_sort_buttons): ?>
                 <li class="dropdown">
@@ -34,3 +38,5 @@
         </div>
     </div>
 </nav>
+<div class="alert alert-success navbar-fixed-bottom hidden" id="info_message"></div>
+<div class="alert alert-warning navbar-fixed-bottom hidden" id="error_message"></div>

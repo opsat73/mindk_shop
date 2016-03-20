@@ -23,7 +23,12 @@
                         <div class ="row">
                             <span>Available: <?php echo $product[product_count]?> items</span>
                         </div>
-
+                        <div class ="row">
+                            <input type="hidden" name="product_id" id="product_id" value="<?php echo $product[product_id];?>">
+                            <div class="col-lg-5"><input type="number" min="1" class="form-control bfh-number" value="1" name="product_count" id="product_count"></div>
+                            <div class="col-lg-1"><button type="button" class="btn btn-success" id="send">Add</button></div>
+                            <div class="col-lg-6"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -31,4 +36,5 @@
         </div>
     </div>
 </div>
+<script src="/media/vkorovay/js/product.js"></script>
 

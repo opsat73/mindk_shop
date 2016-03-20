@@ -10,6 +10,7 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700' rel='stylesheet' type='text/css'>
     <link href="/media/css/theme.css" rel="stylesheet">
+    <link href="/media/vkorovay/css/custom.css" rel="stylesheet">
 
 </head>
 <body role="document">

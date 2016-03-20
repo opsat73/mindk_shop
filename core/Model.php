@@ -25,6 +25,14 @@ class Model
         return $statement->fetchAll();
     }
 
+    public function executeUpdateQuery($q) {
+        $this->db->beginTransaction();
+        $statement = $this->db->prepare($q);
+        $statement->execute();
+        $this->db->commit();
+        return $statement;
+    }
+
     public function getItem() {
         $statement = $this->buildSelectQuery();
         $statement->execute();
