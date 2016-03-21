@@ -5,9 +5,10 @@ use core\ServiceLocator;
 //routing
 $router = ServiceLocator::get('serv:router');
 $command = $router->processRequest();
+$need_front_controller = $command[need_front_controller];
 
 $app = ServiceLocator::get('core:Application');
-$app->process($command, true);
+echo $app->process($command, $need_front_controller);
 //processing
 //rendering
 //output

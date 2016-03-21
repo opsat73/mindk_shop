@@ -4,7 +4,7 @@
     <div class="col-lg-4">
             <div class="jumbotron">
                 <div class="row">
-                    <H4><a href="/product/<?php echo $value[product_id]?>"><?php echo $value[product_name];?></a></H4>
+                    <H4><a class="product_link" shop_path="<?php echo $value[product_id]?>"><?php echo $value[product_name];?></a></H4>
                 </div>
                 <div class="row">
                     <div class="col-lg-4">
@@ -31,3 +31,4 @@
             </div>
         <?php endforeach;?>
 </div>
+<script src="/media/vkorovay/js/product_list.js"></script>
