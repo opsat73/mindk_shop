@@ -54,7 +54,14 @@ CREATE TABLE IF NOT EXISTS `mindk_shop`.`categories` (
   `category_id` INT NOT NULL AUTO_INCREMENT,
   `category_name` VARCHAR(255) NULL,
   `category_order` INT NULL,
-  PRIMARY KEY (`category_id`))
+  `parent_id` INT NULL DEFAULT 0,
+  PRIMARY KEY (`category_id`),
+  INDEX `fk_categories_1_idx` (`parent_id` ASC),
+  CONSTRAINT `fk_categories_1`
+    FOREIGN KEY (`parent_id`)
+    REFERENCES `mindk_shop`.`categories` (`category_id`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 COMMENT = 'store categories of products';
 

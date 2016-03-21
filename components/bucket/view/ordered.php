@@ -14,7 +14,7 @@
     <tbody>
     <?php foreach($list as $key => $value): ?>
     <tr id="row_<?php echo $value[product_id]?>">
-        <td><a href="/product/<?php echo $value[product_id]?>"><?php echo $value[product_name]; ?></a></td>
+        <td><a href="/front/product/<?php echo $value[product_id]?>"><?php echo $value[product_name]; ?></a></td>
         <td><span id="product_price_<?php echo $value[product_id]?>"><?php echo $value[product_price]; ?></span> $</td>
         <td><input type="number" min="1" class="form-control bfh-number product_count" disabled value="<?php echo $value[bucket_product_count]; ?>" name="product_count" id="product_count_<?php echo $value[product_id]?>"></td>
         <td id="summary_price_<?php echo $value[product_id]?>"><?php echo $value[summary_price]; ?> $</td>

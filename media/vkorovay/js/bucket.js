@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     var resp = JSON.parse(xmlhttp.responseText);
                     $('.item_count')[0].innerHTML = resp.count + ' items';
                     $('.total_price')[0].innerHTML = resp.total_price + ' $';
-                    $('#summary_price_'+product_id)[0].innerHTML = (count * $('#product_price_'+product_id)[0].innerHTML) + ' $';
+                    $('#summary_price_'+product_id)[0].innerHTML = Math.round((count * $('#product_price_'+product_id)[0].innerHTML)*100)/100 + ' $';
                     $('#info_message')[0].innerHTML = 'Success!. Product was addet to bucket';
                     $('#info_message').removeClass('hidden');
                     setTimeout(function() {

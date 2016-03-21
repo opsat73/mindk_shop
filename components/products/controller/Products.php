@@ -26,8 +26,29 @@ class Products extends Controller
         $this->assignParameter('page_count', $page_count);
         $this->assignParameter('sort', $sort);
         $this->assignParameter('current_page', $page);
+    }
+
+    public function actionShowProductFront($context = array()) {
+        $this->getModel();
+        $this->getView('shop');
+        $sort = 'ASC';
+        $page = 1;
+        $action = array('controller' => 'com:products.controller.Categories', 'action' => 'Show');
+        $categories = ServiceLocator::get('core:Application')->process($action);
+
+        $action = array('controller' => 'com:products.controller.Products',
+                        'action' => 'ShowProduct',
+                        'parameters' => array(1 => $context[1]));
+        $content = ServiceLocator::get('core:Application')->process($action);
 
 
+        $page_count = ceil($this->model->getCountByCategory(0)/10);
+
+        $this->assignParameter('content', $content);
+        $this->assignParameter('categories', $categories);
+        $this->assignParameter('page_count', $page_count);
+        $this->assignParameter('sort', $sort);
+        $this->assignParameter('current_page', $page);
     }
 
     public function actionShowList($context = array()) {

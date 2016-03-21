@@ -1,5 +1,11 @@
 <?php
 return array(array (
+     'front_product' => array(
+         'path' => '\/front\/product\/([\d]+)',
+         'action' => 'ShowProductFront',
+         'controller' => 'com:products.controller.Products',
+         'is_front'   => true
+     ),
     'product' => array(
         'path' => '\/product\/([\d]+)',
         'action' => 'ShowProduct',
@@ -25,7 +31,8 @@ return array(array (
         'path' => '\/bucket\/(.*)',
         'action' => 'ShowOrdered',
         'controller' => 'com:bucket.controller.Buckets',
-        'method'     => 'GET'
+        'method'     => 'GET',
+        'is_front'   => true
     ),
     'bucket' => array(
         'path' => '\/bucket',
@@ -39,6 +46,11 @@ return array(array (
         'action' => 'Order',
         'controller' => 'com:bucket.controller.Buckets',
         'method'     => 'POST'
+    ),
+    'category' => array(
+        'path' => '\/category\/([\d+])',
+        'action' => 'Show',
+        'controller' => 'com:products.controller.Categories'
     ),
     'home' => array(
         'path' => '\/',
