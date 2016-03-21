@@ -17,12 +17,8 @@ foreach ($product_list as $k => $value): ?>
                     <span><?php echo $value[product_description] ?></span>
                 </div>
                 <div class="row">
-                    <span>Price: <?php echo $value[product_price] ?> $</span>
+                    <H3>Price: <span class="label label-success"><?php echo $value[product_price]?> $</span></H3>
                 </div>
-                <div class="row">
-                    <span>Available: <?php echo $value[product_count] ?> items</span>
-                </div>
-
             </div>
         </div>
     </div>

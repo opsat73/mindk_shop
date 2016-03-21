@@ -16,15 +16,11 @@
                     </div>
                     <div class="col-lg-7">
                         <div class="row">
-                            <span><?php echo $value[product_description]?></span>
+                            <p><?php echo $value[product_description]?></p>
                         </div>
                         <div class ="row">
-                            <span>Price: <?php echo $value[product_price]?> $</span>
+                            <H4>Price: <span class="label label-success"><?php echo $value[product_price]?> $</span></H4>
                         </div>
-                        <div class ="row">
-                            <span>Available: <?php echo $value[product_count]?> items</span>
-                        </div>
-
                     </div>
                 </div>
             </div>

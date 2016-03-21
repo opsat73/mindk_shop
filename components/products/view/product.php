@@ -13,10 +13,7 @@
                             <span><?php echo $product[product_description]?></span>
                         </div>
                         <div class ="row">
-                            <span>Price: <?php echo $product[product_price]?> $</span>
-                        </div>
-                        <div class ="row">
-                            <span>Available: <?php echo $product[product_count]?> items</span>
+                            <H3>Price: <span class="label label-success"><?php echo $product[product_price]?> $</span></H3>
                         </div>
                         <div class ="row">
                             <input type="hidden" name="product_id" id="product_id" value="<?php echo $product[product_id];?>">

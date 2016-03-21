@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `mindk_shop`.`products` (
   `product_id` INT NOT NULL AUTO_INCREMENT,
   `product_name` VARCHAR(255) NULL,
   `product_count` FLOAT NOT NULL DEFAULT 0,
-  `product_description` TEXT NULL,
+  `product_description` LONGTEXT NULL,
   `product_price` DECIMAL(10,2) NOT NULL DEFAULT 0.00,
   `product_available` TINYINT NOT NULL DEFAULT 0,
   `product_visible` TINYINT NOT NULL DEFAULT 0,
