@@ -33,6 +33,7 @@ class Router
                 if ($request->request_type == 'POST') {
                     $action[parameters] = $_REQUEST;
                 }
+                $action[need_front_controller] = isset($value[is_front])?$value[is_front]:false;
                 return $action;
             }
         }

@@ -2,3 +2,14 @@
     content:"*";
     color:red;
 }
+
+.pagination_button {
+    cursor:pointer;
+}
+.categories  {
+    cursor:pointer;
+}
+
+.product_link {
+    cursor:pointer;
+}

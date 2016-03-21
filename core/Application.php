@@ -18,7 +18,7 @@ class Application
         if ($needFrontController) {
             $frontController = ServiceLocator::get('core:FrontController');
             $frontController->execute($action);
-            echo $frontController->render();
+            return $frontController->render();
         } else {
             $controller = ServiceLocator::get($action[controller]);
             $method = 'action'.$action[action];

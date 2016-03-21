@@ -1,9 +1,4 @@
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="col-lg-3"><?php
-            echo $categories;
-            ?></div>
-        <div class="col-lg-9"><div class="jumbotron">
+<div class="jumbotron">
                 <div class="row">
                     <H4><?php echo $product[product_name];?></H4>
                 </div>
@@ -33,8 +28,4 @@
                 </div>
             </div>
             <?php echo $random ?>
-        </div>
-    </div>
-</div>
-<script src="/media/vkorovay/js/product.js"></script>
 

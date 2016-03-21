@@ -10,6 +10,11 @@ return array(array (
         'action' => 'ShowList',
         'controller' => 'com:products.controller.Products'
     ),
+    'products' => array(
+        'path' => '\/([\d]+)\/(ASC|DESC)\/([\d]+)',
+        'action' => 'ShowList',
+        'controller' => 'com:products.controller.Products'
+    ),
     'bucket_add' => array(
         'path' => '\/add',
         'action' => 'AddProduct',
@@ -26,7 +31,8 @@ return array(array (
         'path' => '\/bucket',
         'action' => 'ShowBucket',
         'controller' => 'com:bucket.controller.Buckets',
-        'method'     => 'GET'
+        'method'     => 'GET',
+        'is_front'   => true
     ),
     'order' => array(
         'path' => '\/bucket',
@@ -36,7 +42,8 @@ return array(array (
     ),
     'home' => array(
         'path' => '\/',
-        'action' => 'ShowList',
-        'controller' => 'com:products.controller.Products'
+        'action' => 'ShowAll',
+        'controller' => 'com:products.controller.Products',
+        'is_front'   => true
     ),
 ));
