@@ -28,4 +28,5 @@
                 </div>
             </div>
             <?php echo $random ?>
+<script src="/media/vkorovay/js/product.js"></script>
 

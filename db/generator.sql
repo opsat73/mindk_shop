@@ -1,9 +1,13 @@
-insert into categories  values(1, 'for men', 1);
-insert into categories  values(2, 'for woomen', 2);
-insert into categories  values(3, 'for child', 3);
-insert into categories  values(4, 'for MindKickers', 4);
-insert into categories  values(5, 'exclusive', 5);
-insert into categories  values(6, 'intresting', 6);
+insert into categories  values(1, 'main', -1, null);
+insert into categories  values(2, 'for MindKickers', 0, 1);
+insert into categories  values(6, 'for human', 1, 1);
+insert into categories  values(7, 'for adult', 5, 6);
+insert into categories  values(8, 'for men', 6, 7);
+insert into categories  values(9, 'for woomen', 7, 7);
+insert into categories  values(10, 'for child', 4, 6);
+insert into categories  values(3, 'something else', 2, 1);
+insert into categories  values(4, 'exclusive', 8, 3);
+insert into categories  values(5, 'intresting', 9, 3);
 
 DROP TABLE IF EXISTS `mindk_shop`.`product_rand1`;
 DROP TABLE IF EXISTS `mindk_shop`.`product_rand2`;
@@ -91,6 +95,16 @@ CREATE PROCEDURE place_products(IN LOOPS INT)
 
       WHILE done = 0 DO
         SET category = mod(round(rand() * 100), 6) + 1;
+        IF category = 1 THEN
+          SET category = 8;
+        END IF;
+        IF category = 3 THEN
+          SET category = 9;
+        END IF;
+        IF category = 6 THEN
+          SET category = 10;
+        END IF;
+
         SELECT COUNT(*)
         INTO map_count
         FROM category2products_map
