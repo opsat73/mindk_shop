@@ -21,8 +21,6 @@ class Products extends Model
         if ($how_many != 0) {
             $q .= ' limit '.$from.', '.$how_many;
         }
-        echo $q;
-
         return $this->executeSelectQuery($q);
     }
 
