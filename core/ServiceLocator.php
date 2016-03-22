@@ -8,6 +8,12 @@
 
 namespace core;
 
+/**
+ * Class ServiceLocator
+ * Service locator
+ *
+ * @package core
+ */
 class ServiceLocator
 {
 
@@ -15,11 +21,17 @@ class ServiceLocator
     private static $instance = null;
     private static $services = array();
 
+    /**
+     * construct Service locator and load file with config of services
+     */
     private function __construct()
     {
         $this->available_services = include(BASE_DIR.DS.'config'.DS.'services.php');
     }
 
+    /**
+     * @return ServiceLocator|null get Instance of service locator
+     */
     private static function getInstance()
     {
         if (empty(self::$instance)) {
@@ -28,6 +40,13 @@ class ServiceLocator
         return self::$instance;
     }
 
+    /**
+     * @param $fname   neet go be get fucntion
+     * @param $fparams need to be identification of parameters
+     *
+     * @return object return serivces
+     * @throws \Excepion if service not found
+     */
     public function __callStatic($fname, $fparams)
     {
         $locator = self::getInstance();
@@ -41,25 +60,24 @@ class ServiceLocator
 
                         if (is_array($locator->available_services[$fragments[1]]['init_parameters'])) {
                             $parameters = $locator->available_services[$fragments[1]]['init_parameters'];
-                        } else
-                         {
+                        } else {
                             $parameters = include($locator->available_services[$fragments[1]]['init_parameters']);
                         }
-                        $result                        = $r_class->newInstanceArgs($parameters);
+                        $result                           = $r_class->newInstanceArgs($parameters);
                         $locator->services[$fragments[1]] = $result;
                     }
                     return $locator->services[$fragments[1]];
                 }
                     break;
                 case 'core': {
-                    $path = 'core';
+                    $path    = 'core';
                     $path    = $path.'\\'.implode('\\', explode('.', $fragments[1]));
                     $r_class = new \ReflectionClass($path);
                     return $r_class->newInstance($fparams[1]);
                 }
                     break;
                 case 'com': {
-                    $path = 'components\\';
+                    $path    = 'components\\';
                     $path    = $path.implode('\\', explode('.', $fragments[1]));
                     $r_class = new \ReflectionClass($path);
                     return $r_class->newInstance($fparams[1]);

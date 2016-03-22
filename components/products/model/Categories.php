@@ -4,9 +4,24 @@ namespace components\products\model;
 
 use \core\Model;
 
+/**
+ * Class Categories
+ * get categories info
+ *
+ * @package components\products\model
+ */
 class Categories extends Model
 {
-    public function getList($parent_category = 1) {
+    /**
+     * get categories by parent id
+     *
+     * @param int $parent_category parent id of category
+     *                             if not set show top categories
+     *
+     * @return mixed
+     */
+    public function getList($parent_category = 1)
+    {
         if ($parent_category == 0) {
             $parent_category = 1;
         }

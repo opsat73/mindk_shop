@@ -11,8 +11,17 @@ namespace components\bucket\controller;
 use core\Controller;
 use core\ServiceLocator;
 
+/**
+ * Class Buckets
+ * bucket cuntroller for do busines action with bucket
+ * @package components\bucket\controller
+ */
 class Buckets extends Controller {
 
+    /**
+     * add product to bucket
+     * @param array $context command params
+     */
     public function actionAddProduct ($context = array())
     {
         $session_id = ServiceLocator::get('core:Session')->get_session_id();
@@ -25,6 +34,10 @@ class Buckets extends Controller {
         die();
     }
 
+    /**
+     * show current bucket
+     * @param array $context command params
+     */
     public function actionShowBucket($context = array())
     {
         $session = ServiceLocator::get('core:Session');
@@ -38,6 +51,10 @@ class Buckets extends Controller {
         $this->getView('bucket');
     }
 
+    /**
+     * show ordered bucket
+     * @param array $context action params
+     */
     public function actionShowOrdered($context = array())
     {
         $this->getModel();
@@ -46,6 +63,10 @@ class Buckets extends Controller {
         $this->getView('ordered');
     }
 
+    /**
+     * order products and send link to order to email
+     * @param array $context action params
+     */
     public function actionOrder($context = array())
     {
         $session = ServiceLocator::get('core:Session');

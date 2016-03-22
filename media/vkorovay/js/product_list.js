@@ -87,6 +87,7 @@ init = function(event) {
                     var resp = xmlhttp.responseText;
                     $('.content')[0].innerHTML = resp;
                     $('.categories').removeClass('active');
+                    $('#sort-controll').addClass('hidden');
                     init();
                     initProduct();
                 } else {

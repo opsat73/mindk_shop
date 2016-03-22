@@ -18,6 +18,7 @@ initNavigation = function(event) {
                     $('.content')[0].innerHTML = resp;
                     $('.categories.active').removeClass('active');
                     $(target).addClass('active');
+                    $('#sort-controll').removeClass('hidden');
                     init();
                     initProduct();
                 } else {
@@ -57,6 +58,7 @@ initParentNavigation = function(event) {
                         $('#category_glyph_' + category).removeClass('glyphicon-plus');
                         $('#category_glyph_' + category).addClass('glyphicon-minus');
                         target.setAttribute('category_status', 'open');
+                        $('#sort-controll').removeClass('hidden');
                         init();
                         initProduct();
                         initNavigation();

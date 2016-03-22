@@ -21,8 +21,7 @@
                 <li class="total_price_menu <?php echo (isset($count))?'':'hidden';?>">
                     <p class="navbar-text total_price"><?php echo $total_price; ?> $</p>
                 </li>
-                <?php if ($current_location=='list'): ?>
-                <li class="dropdown">
+                <li class="dropdown <?php echo ($current_location=='list')?'':'hidden'; ?>" id="sort-controll">
                     <a class="dropdown-toggle menu_bar_sort_drop_down" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <?php echo 'Cheaper first'; ?>
                         <span class="caret">
@@ -33,7 +32,6 @@
                         <li><a class = "menu_bar_sort" shop_path="DESC">Expensive first</a></li>
                     </ul>
                 </li>
-                <?php endif; ?>
             </ul>
         </div>
     </div>

@@ -8,18 +8,36 @@
 
 namespace core;
 
+/**
+ * Class Router
+ * for parsing routes
+ *
+ * @package core
+ */
 class Router
 {
     private $routes = null;
 
-    public function __construct($routes) {
+    /**
+     * construct router
+     *
+     * @param $routes path to config routes file
+     */
+    public function __construct($routes)
+    {
         $this->routes = $routes;
     }
 
-    public function processRequest() {
+    /**
+     * parse uri and return command
+     *
+     * @return array|string result of query
+     */
+    public function processRequest()
+    {
 
         $request = ServiceLocator::get('core:Request');
-        $uri = $request->request_URI;
+        $uri     = $request->request_URI;
         foreach ($this->routes as $key => $value) {
             $request_method = (isset($value[method])?$value[method]:'GET');
             if (preg_match('/'.$value[path].'/', $uri, $rez) && $request_method == $request->request_type) {
@@ -37,10 +55,6 @@ class Router
                 return $action;
             }
         }
-        return 'request object';
-    }
-
-    public function buildRoute($request) {
-        return 'link';
+        return null;
     }
 }

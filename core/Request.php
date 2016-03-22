@@ -8,13 +8,23 @@
 
 namespace core;
 
+/**
+ * Class Request
+ * base function for request
+ *
+ * @package core
+ */
 class Request
 {
     public $request_type = null;
     public $request_URI = null;
     public $current_location = null;
-    //private $request_type = null;
-    public function __construct() {
+
+    /**
+     * construct request
+     */
+    public function __construct()
+    {
         $this->request_type = $_SERVER['REQUEST_METHOD'];
         $this->request_URI  = $_SERVER['REQUEST_URI'];
     }

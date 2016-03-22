@@ -7,14 +7,26 @@
  * Time: 22:11
  */
 namespace components\menu\controller;
+
 use core\Controller;
 use core\ServiceLocator;
 
+/**
+ * Class Menu
+ * menu
+ *
+ * @package components\menu\controller
+ */
 class Menu extends Controller
 {
-    public function actionDrawMenu ($context = array())
+    /**
+     * draw top menu
+     *
+     * @param array $context parameters
+     */
+    public function actionDrawMenu($context = array())
     {
-        $session = ServiceLocator::get('core:Session');
+        $session          = ServiceLocator::get('core:Session');
         $current_location = $session->getParameter('current_location');
         if (in_array($current_location, array('products', 'home', 'product'))) {
             $current_location = 'list';
@@ -23,8 +35,8 @@ class Menu extends Controller
             $current_location = 'bucket';
         }
         $this->assignParameter('current_location', $current_location);
-        $session = ServiceLocator::get('core:Session');
-        $count = $session->getParameter('count');
+        $session     = ServiceLocator::get('core:Session');
+        $count       = $session->getParameter('count');
         $total_price = $session->getParameter('total_price');
         if (isset($count)) {
             $this->assignParameter('count', $count);
@@ -34,7 +46,7 @@ class Menu extends Controller
             ($context[orig_action][action] == 'ShowList')
         ) {
             $category = isset($context[orig_action][parameters][1])?$context[orig_action][parameters][1]:0;
-            $sort = isset($context[orig_action][parameters][2])?$context[orig_action][parameters][2]:'ASC';
+            $sort     = isset($context[orig_action][parameters][2])?$context[orig_action][parameters][2]:'ASC';
             $this->assignParameter('sort', $sort);
             $this->assignParameter('show_sort_buttons', true);
             $this->assignParameter('category', $category);
